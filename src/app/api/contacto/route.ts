@@ -26,7 +26,7 @@ export async function POST(req: NextRequest) {
     const resend = new Resend(apiKey);
 
     await resend.emails.send({
-      from: "FJ Club Chile <onboarding@resend.dev>", // reemplazar por dominio propio verificado en Resend
+      from: "FJ Club Chile <contacto@fjclubchile.cl>", // requiere fjclubchile.cl verificado en Resend
       to: destino,
       replyTo: email,
       subject: `Nuevo contacto FJ Club Chile — ${nombre}`,
