@@ -77,7 +77,23 @@ body {
   opacity: 0.5;
 }
 
-:focus-visible {
-  outline: 2px solid var(--color-rust);
-  outline-offset: 3px;
+/* Textura de dunas de desierto (para la portada) */
+.dune-bg {
+  background:
+    radial-gradient(ellipse 80% 40% at 20% 15%, rgba(214,90,46,0.08), transparent 60%),
+    radial-gradient(ellipse 70% 35% at 85% 75%, rgba(62,110,116,0.08), transparent 60%),
+    repeating-linear-gradient(
+      100deg,
+      rgba(28,36,32,0.035) 0px,
+      rgba(28,36,32,0.035) 2px,
+      transparent 2px,
+      transparent 90px
+    ),
+    linear-gradient(180deg, #f1ead9 0%, var(--color-sand) 45%, var(--color-sand-2) 100%);
 }
+
+.flag-stripe {
+  height: 6px;
+  background: linear-gradient(to right, #0039a6 0%, #0039a6 33%, #ffffff 33%, #ffffff 66%, #d52b1e 66%, #d52b1e 100%);
+}
+

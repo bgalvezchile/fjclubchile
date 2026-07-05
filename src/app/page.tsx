@@ -1,13 +1,21 @@
+import Image from "next/image";
 import Link from "next/link";
-import { Compass, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 export default function Home() {
   return (
-    <section className="topo-bg flex min-h-[80vh] flex-col items-center justify-center px-5 text-center">
-      <Compass className="h-12 w-12 text-rust" strokeWidth={1.5} />
+    <section className="dune-bg relative flex min-h-[80vh] flex-col items-center justify-center px-5 text-center">
+      <Image
+        src="/logos/logo-compass.jpg"
+        alt="FJ Club Chile"
+        width={220}
+        height={165}
+        className="h-auto w-[180px] md:w-[220px]"
+        priority
+      />
 
       <p className="mt-6 font-mono text-xs uppercase tracking-widest text-rust">
-        Jornada Estratégica MAF 2026 · FJ Club Chile
+        FJ Club Chile
       </p>
 
       <h1 className="mt-4 max-w-xl font-display text-4xl font-semibold uppercase leading-[0.95] tracking-tight text-ink md:text-5xl">
@@ -29,6 +37,8 @@ export default function Home() {
       <p className="mt-10 font-mono text-xs text-ripio">
         contacto@fjclubchile.cl
       </p>
+
+      <div className="flag-stripe absolute bottom-0 left-0 w-full" />
     </section>
   );
 }
