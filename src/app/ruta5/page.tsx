@@ -48,7 +48,7 @@ export default function Ruta5Page() {
             </div>
             <div className="bg-sand p-5">
               <p className="font-mono text-[11px] uppercase tracking-wide text-ripio">Punto de encuentro</p>
-              <p className="mt-1 font-display text-lg italic font-normal text-rust">A completar</p>
+              <p className="mt-1 font-display text-lg italic font-normal text-rust">Por confirmar</p>
             </div>
             <div className="bg-sand p-5">
               <p className="font-mono text-[11px] uppercase tracking-wide text-ripio">Frecuencia de radio</p>
