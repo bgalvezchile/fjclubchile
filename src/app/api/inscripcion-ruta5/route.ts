@@ -92,7 +92,7 @@ export async function POST(req: NextRequest) {
     ].join("\n");
 
     await resend.emails.send({
-      from: "FJ Club Chile <inscripciones@fjclubchile.cl>", // requiere fjclubchile.cl verificado en Resend
+      from: "FJ Club Chile <onboarding@resend.dev>", // cambia esto si más adelante verificas fjclubchile.cl en Resend
       to: destino,
       replyTo: data.email,
       subject: `Inscripción 5ª Ruta — ${data.pilotoNombre} (${data.patente})`,
