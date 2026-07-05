@@ -1,0 +1,83 @@
+@import "tailwindcss";
+
+:root {
+  --color-sand: #ede6d6;      /* Altiplano Sand — fondo principal */
+  --color-sand-2: #e2d8c3;    /* variante un poco más oscura para bandas */
+  --color-ink: #1c2420;       /* Expedition Ink — texto / fondos oscuros */
+  --color-ink-2: #252f2a;
+  --color-rust: #d65a2e;      /* Sun Fusion — acento primario (color FJ) */
+  --color-rust-dark: #a8451f;
+  --color-steel: #3e6e74;     /* Altiplano Sky — acento secundario */
+  --color-steel-dark: #2c4f54;
+  --color-ripio: #8a8377;     /* Ripio Grey — neutro / texto muted */
+  --color-bone: #f7f3ea;      /* Roof White — texto sobre fondo oscuro */
+}
+
+@theme inline {
+  --color-sand: var(--color-sand);
+  --color-sand-2: var(--color-sand-2);
+  --color-ink: var(--color-ink);
+  --color-ink-2: var(--color-ink-2);
+  --color-rust: var(--color-rust);
+  --color-rust-dark: var(--color-rust-dark);
+  --color-steel: var(--color-steel);
+  --color-steel-dark: var(--color-steel-dark);
+  --color-ripio: var(--color-ripio);
+  --color-bone: var(--color-bone);
+
+  --font-display: var(--font-oswald);
+  --font-body: var(--font-plex-sans);
+  --font-mono: var(--font-plex-mono);
+}
+
+* {
+  scrollbar-color: var(--color-ripio) transparent;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-sand);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Textura de curvas de nivel (topográfico), usada como fondo decorativo */
+.topo-bg {
+  background-image:
+    repeating-radial-gradient(circle at 15% 20%, transparent 0, transparent 26px, rgba(28, 36, 32, 0.05) 27px, transparent 28px),
+    repeating-radial-gradient(circle at 85% 70%, transparent 0, transparent 34px, rgba(28, 36, 32, 0.05) 35px, transparent 36px);
+}
+
+.topo-bg-dark {
+  background-image:
+    repeating-radial-gradient(circle at 15% 20%, transparent 0, transparent 26px, rgba(247, 243, 234, 0.05) 27px, transparent 28px),
+    repeating-radial-gradient(circle at 85% 70%, transparent 0, transparent 34px, rgba(247, 243, 234, 0.05) 35px, transparent 36px);
+}
+
+/* Trazo de "ruta" punteado usado como divisor de sección */
+.trail-divider {
+  height: 2px;
+  background-image: linear-gradient(to right, var(--color-ripio) 40%, transparent 0%);
+  background-size: 14px 2px;
+  background-repeat: repeat-x;
+  opacity: 0.5;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-rust);
+  outline-offset: 3px;
+}
