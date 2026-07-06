@@ -4,6 +4,7 @@ import { ArrowRight } from "lucide-react";
 
 export default function Home() {
   return (
+    <>
     <section className="relative flex min-h-[92vh] flex-col items-center justify-end overflow-hidden px-5 pb-16 text-center md:justify-center md:pb-0">
       <Image
         src="/hero-dunas.jpg"
@@ -54,6 +55,56 @@ export default function Home() {
       </div>
 
       <div className="flag-stripe absolute bottom-0 left-0 z-10 w-full" />
-    </section>
+      </section>
+
+      <section className="bg-ink px-5 py-16 md:py-20">
+        <div className="mx-auto max-w-6xl">
+          <p className="text-center font-mono text-xs uppercase tracking-[0.2em] text-rust">
+            En terreno
+          </p>
+          <h2 className="mt-3 text-center font-display text-2xl font-semibold uppercase tracking-tight text-bone md:text-3xl">
+            Cordillera, río y desierto
+          </h2>
+
+          <div className="mt-10 grid grid-cols-1 gap-4 md:grid-cols-3">
+            <div className="relative aspect-[4/5] overflow-hidden rounded-sm md:col-span-1">
+              <Image
+                src="/hero-cordillera.jpg"
+                alt="FJ Cruiser cruzando un río en la cordillera, rodeado de montañas nevadas"
+                fill
+                className="object-cover"
+              />
+              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/80 to-transparent p-4">
+                <p className="font-mono text-xs text-bone/80">Cordillera</p>
+              </div>
+            </div>
+
+            <div className="relative aspect-[4/5] overflow-hidden rounded-sm md:col-span-1">
+              <Image
+                src="/hero-rio.jpg"
+                alt="FJ Cruiser cruzando un río con la bandera de Chile flameando"
+                fill
+                className="object-cover"
+              />
+              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/80 to-transparent p-4">
+                <p className="font-mono text-xs text-bone/80">Río Pangal</p>
+              </div>
+            </div>
+
+            <div className="relative aspect-[4/5] overflow-hidden rounded-sm md:col-span-1">
+              <Image
+                src="/hero-cerro.jpg"
+                alt="Convoy de FJ Cruiser en camino de tierra, con el logo FJ Club Chile"
+                fill
+                className="object-cover"
+              />
+              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/80 to-transparent p-4">
+                <p className="font-mono text-xs text-bone/80">En convoy</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
   );
 }
