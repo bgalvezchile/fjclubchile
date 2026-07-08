@@ -1,8 +1,8 @@
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
 import { albumes } from "@/data/albumes";
+import AlbumGallery from "@/components/AlbumGallery";
 
 export function generateStaticParams() {
   return albumes.map((a) => ({ slug: a.slug }));
@@ -42,21 +42,7 @@ export default async function AlbumPage({
           {album.lugar} · {album.fecha}
         </p>
 
-        <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
-          {album.fotos.map((foto, i) => (
-            <div key={i} className="relative aspect-[4/3] overflow-hidden">
-              <Image
-                src={foto.src}
-                alt={foto.caption}
-                fill
-                className="object-cover"
-              />
-              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-ink/80 to-transparent p-3">
-                <p className="font-mono text-[11px] text-bone/80">{foto.caption}</p>
-              </div>
-            </div>
-          ))}
-        </div>
+        <AlbumGallery fotos={album.fotos} />
       </div>
     </section>
   );
