@@ -18,6 +18,12 @@ export default function NavBar() {
 
         <div className="flex items-center gap-5">
           <Link
+            href="/como-unirte"
+            className="hidden font-display text-sm font-medium uppercase tracking-wider text-ink/70 transition-colors hover:text-rust sm:inline"
+          >
+            Únete
+          </Link>
+          <Link
             href="/galeria"
             className="font-display text-sm font-medium uppercase tracking-wider text-ink/70 transition-colors hover:text-rust"
           >
