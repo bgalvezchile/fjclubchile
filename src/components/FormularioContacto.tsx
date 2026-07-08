@@ -9,15 +9,34 @@ export default function FormularioContacto() {
   const [estado, setEstado] = useState<Estado>("idle");
   const [errorMsg, setErrorMsg] = useState("");
 
+  const [email, setEmail] = useState("");
+  const [emailConfirma, setEmailConfirma] = useState("");
+  const [telefono, setTelefono] = useState("");
+  const [telefonoConfirma, setTelefonoConfirma] = useState("");
+
+  const emailCoincide = email.length === 0 || email === emailConfirma;
+  const telefonoCoincide = telefono.length === 0 || telefono === telefonoConfirma;
+
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setEstado("enviando");
     setErrorMsg("");
+
+    if (email !== emailConfirma) {
+      setErrorMsg("El email no coincide en ambos campos.");
+      return;
+    }
+    if (telefono !== telefonoConfirma) {
+      setErrorMsg("El número de celular no coincide en ambos campos.");
+      return;
+    }
+
+    setEstado("enviando");
 
     const form = e.currentTarget;
     const data = {
       nombre: (form.elements.namedItem("nombre") as HTMLInputElement).value,
-      email: (form.elements.namedItem("email") as HTMLInputElement).value,
+      email,
+      telefono,
       modelo: (form.elements.namedItem("modelo") as HTMLInputElement).value,
       mensaje: (form.elements.namedItem("mensaje") as HTMLTextAreaElement).value,
     };
@@ -32,6 +51,10 @@ export default function FormularioContacto() {
       if (!res.ok) throw new Error(json.error || "Error al enviar");
       setEstado("ok");
       form.reset();
+      setEmail("");
+      setEmailConfirma("");
+      setTelefono("");
+      setTelefonoConfirma("");
     } catch (err) {
       setEstado("error");
       setErrorMsg(err instanceof Error ? err.message : "Error al enviar");
@@ -54,21 +77,27 @@ export default function FormularioContacto() {
     );
   }
 
+  const inputClass =
+    "mt-1.5 w-full border border-ink/20 bg-sand px-3 py-2.5 text-ink outline-none focus:border-rust";
+  const inputErrorClass =
+    "mt-1.5 w-full border border-rust-dark bg-sand px-3 py-2.5 text-ink outline-none focus:border-rust";
+
   return (
     <form onSubmit={onSubmit} className="space-y-5">
+      <div>
+        <label htmlFor="nombre" className="font-mono text-xs uppercase tracking-wide text-ripio">
+          Nombre y apellido *
+        </label>
+        <input
+          id="nombre"
+          name="nombre"
+          type="text"
+          required
+          className={inputClass}
+        />
+      </div>
+
       <div className="grid gap-5 sm:grid-cols-2">
-        <div>
-          <label htmlFor="nombre" className="font-mono text-xs uppercase tracking-wide text-ripio">
-            Nombre *
-          </label>
-          <input
-            id="nombre"
-            name="nombre"
-            type="text"
-            required
-            className="mt-1.5 w-full border border-ink/20 bg-sand px-3 py-2.5 text-ink outline-none focus:border-rust"
-          />
-        </div>
         <div>
           <label htmlFor="email" className="font-mono text-xs uppercase tracking-wide text-ripio">
             Email *
@@ -78,21 +107,74 @@ export default function FormularioContacto() {
             name="email"
             type="email"
             required
-            className="mt-1.5 w-full border border-ink/20 bg-sand px-3 py-2.5 text-ink outline-none focus:border-rust"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className={inputClass}
           />
+        </div>
+        <div>
+          <label htmlFor="email-confirma" className="font-mono text-xs uppercase tracking-wide text-ripio">
+            Repite tu email *
+          </label>
+          <input
+            id="email-confirma"
+            type="email"
+            required
+            value={emailConfirma}
+            onChange={(e) => setEmailConfirma(e.target.value)}
+            className={emailCoincide ? inputClass : inputErrorClass}
+          />
+          {!emailCoincide && (
+            <p className="mt-1 text-xs text-rust-dark">Los emails no coinciden.</p>
+          )}
+        </div>
+      </div>
+
+      <div className="grid gap-5 sm:grid-cols-2">
+        <div>
+          <label htmlFor="telefono" className="font-mono text-xs uppercase tracking-wide text-ripio">
+            Número de celular *
+          </label>
+          <input
+            id="telefono"
+            name="telefono"
+            type="tel"
+            required
+            placeholder="+56 9 1234 5678"
+            value={telefono}
+            onChange={(e) => setTelefono(e.target.value)}
+            className={inputClass}
+          />
+        </div>
+        <div>
+          <label htmlFor="telefono-confirma" className="font-mono text-xs uppercase tracking-wide text-ripio">
+            Repite tu celular *
+          </label>
+          <input
+            id="telefono-confirma"
+            type="tel"
+            required
+            placeholder="+56 9 1234 5678"
+            value={telefonoConfirma}
+            onChange={(e) => setTelefonoConfirma(e.target.value)}
+            className={telefonoCoincide ? inputClass : inputErrorClass}
+          />
+          {!telefonoCoincide && (
+            <p className="mt-1 text-xs text-rust-dark">Los números no coinciden.</p>
+          )}
         </div>
       </div>
 
       <div>
         <label htmlFor="modelo" className="font-mono text-xs uppercase tracking-wide text-ripio">
-          Modelo y año de tu FJ (si tienes)
+          Modelo, año y patente de tu FJ (si tienes)
         </label>
         <input
           id="modelo"
           name="modelo"
           type="text"
-          placeholder="Ej: FJ Cruiser 2012"
-          className="mt-1.5 w-full border border-ink/20 bg-sand px-3 py-2.5 text-ink outline-none focus:border-rust"
+          placeholder="Ej: FJ Cruiser 2012, patente AB-CD-12"
+          className={inputClass}
         />
       </div>
 
@@ -105,7 +187,7 @@ export default function FormularioContacto() {
           name="mensaje"
           required
           rows={5}
-          className="mt-1.5 w-full border border-ink/20 bg-sand px-3 py-2.5 text-ink outline-none focus:border-rust"
+          className={inputClass}
         />
       </div>
 

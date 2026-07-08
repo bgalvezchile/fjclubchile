@@ -3,9 +3,9 @@ import { Resend } from "resend";
 
 export async function POST(req: NextRequest) {
   try {
-    const { nombre, email, modelo, mensaje } = await req.json();
+    const { nombre, email, telefono, modelo, mensaje } = await req.json();
 
-    if (!nombre || !email || !mensaje) {
+    if (!nombre || !email || !telefono || !mensaje) {
       return NextResponse.json(
         { error: "Faltan campos obligatorios." },
         { status: 400 }
@@ -33,7 +33,8 @@ export async function POST(req: NextRequest) {
       text: [
         `Nombre: ${nombre}`,
         `Email: ${email}`,
-        `Modelo/año FJ: ${modelo || "No indicado"}`,
+        `Celular: ${telefono}`,
+        `Modelo/año/patente FJ: ${modelo || "No indicado"}`,
         "",
         "Mensaje:",
         mensaje,
