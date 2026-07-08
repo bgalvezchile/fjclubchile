@@ -24,6 +24,12 @@ export default function NavBar() {
             Galería
           </Link>
           <Link
+            href="/equipamiento"
+            className="hidden font-display text-sm font-medium uppercase tracking-wider text-ink/70 transition-colors hover:text-rust sm:inline"
+          >
+            Equipamiento
+          </Link>
+          <Link
             href="/ruta5"
             className="rounded-sm bg-rust px-4 py-2 font-display text-sm font-medium uppercase tracking-wider text-bone transition-colors hover:bg-rust-dark"
           >
