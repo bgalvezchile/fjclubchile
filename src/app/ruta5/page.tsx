@@ -62,7 +62,53 @@ export default function Ruta5Page() {
             agua</strong> para toda la jornada: no hay parada programada para
             comprar alimentos.
           </div>
+
+          <div className="mt-8 border border-ink/15 bg-sand-2/50">
+            <div className="border-b border-ink/15 bg-ink px-5 py-3">
+              <p className="font-display text-sm font-semibold uppercase tracking-wider text-bone">
+                Cuota de inscripción
+              </p>
+            </div>
+            <div className="p-5">
+              <p className="font-display text-2xl font-semibold text-ink">
+                $10.000 <span className="text-sm font-normal text-ink/60">por vehículo</span>
+              </p>
+              <p className="mt-1 font-mono text-xs uppercase tracking-wide text-rust">
+                Plazo máximo de pago: viernes 17 de julio
+              </p>
+
+              <div className="mt-5 grid gap-x-6 gap-y-2 text-sm sm:grid-cols-2">
+                <div>
+                  <p className="font-mono text-[11px] uppercase tracking-wide text-ripio">Nombre</p>
+                  <p className="text-ink">Jorge Valenzuela</p>
+                </div>
+                <div>
+                  <p className="font-mono text-[11px] uppercase tracking-wide text-ripio">RUT</p>
+                  <p className="font-mono text-ink">7.655.562-1</p>
+                </div>
+                <div>
+                  <p className="font-mono text-[11px] uppercase tracking-wide text-ripio">Banco</p>
+                  <p className="text-ink">Scotiabank</p>
+                </div>
+                <div>
+                  <p className="font-mono text-[11px] uppercase tracking-wide text-ripio">Cuenta corriente</p>
+                  <p className="font-mono text-ink">970247459</p>
+                </div>
+                <div className="sm:col-span-2">
+                  <p className="font-mono text-[11px] uppercase tracking-wide text-ripio">Email para el comprobante</p>
+                  <p className="font-mono text-ink">jorge.valenzuela@live.cl</p>
+                </div>
+              </div>
+
+              <p className="mt-4 text-xs text-ink/50">
+                Envía tu comprobante de transferencia al email de arriba. Si te
+                registras y no cuentas con tu pago al día, no podrás participar
+                en la actividad.
+              </p>
+            </div>
+          </div>
         </div>
+
       </section>
 
       <section className="border-b border-ink/10">
