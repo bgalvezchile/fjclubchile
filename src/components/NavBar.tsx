@@ -16,12 +16,20 @@ export default function NavBar() {
           />
         </Link>
 
-        <Link
-          href="/ruta5"
-          className="rounded-sm bg-rust px-4 py-2 font-display text-sm font-medium uppercase tracking-wider text-bone transition-colors hover:bg-rust-dark"
-        >
-          Inscripción 5ª Ruta
-        </Link>
+        <div className="flex items-center gap-5">
+          <Link
+            href="/galeria"
+            className="font-display text-sm font-medium uppercase tracking-wider text-ink/70 transition-colors hover:text-rust"
+          >
+            Galería
+          </Link>
+          <Link
+            href="/ruta5"
+            className="rounded-sm bg-rust px-4 py-2 font-display text-sm font-medium uppercase tracking-wider text-bone transition-colors hover:bg-rust-dark"
+          >
+            Inscripción 5ª Ruta
+          </Link>
+        </div>
       </div>
     </header>
   );
