@@ -1,4 +1,4 @@
-# FJ Club Chile
+# FJ Club de Chile
 
 Sitio web del club de propietarios de Toyota FJ Cruiser en Chile.
 Next.js 15 (App Router) + Tailwind CSS v4 + Resend (formulario de contacto).
